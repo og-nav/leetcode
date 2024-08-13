@@ -1,38 +1,19 @@
-'''
-Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+"""
+Title: 200. Number of Islands
+URL: https://leetcode.com/problems/number-of-islands/
 
-An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. 
-You may assume all four edges of the grid are all surrounded by water.
+Approach:
+- iterate left to write, row by row
+- once island is reached and current [r, c] isn't part of an already visited island, DFS/BFS the island
+-
 
-Example 1:
 
-Input: grid = [
-  ["1","1","1","1","0"],
-  ["1","1","0","1","0"],
-  ["1","1","0","0","0"],
-  ["0","0","0","0","0"]
-]
-Output: 1
-Example 2:
+Time Complexity: O(m * n)
+Space Complexity: O(m * n)
 
-Input: grid = [
-  ["1","1","0","0","0"],
-  ["1","1","0","0","0"],
-  ["0","0","1","0","0"],
-  ["0","0","0","1","1"]
-]
-Output: 3
- 
-
-Constraints:
-m == grid.length
-n == grid[i].length
-1 <= m, n <= 300
-grid[i][j] is '0' or '1'.
-'''
-from collections import deque
-from typing import List
-
+Solution:
+"""
+from template import *
 
 class Solution:
     def numIslandsDFS(self, grid: List[List[str]]) -> int:
@@ -85,3 +66,41 @@ class Solution:
                                 queue.append((r + dr, c + dc))
         
         return res
+
+
+
+
+
+"""
+Question:
+Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. 
+You may assume all four edges of the grid are all surrounded by water.
+
+Example 1:
+
+Input: grid = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+Output: 1
+Example 2:
+
+Input: grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+Output: 3
+ 
+
+Constraints:
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+"""

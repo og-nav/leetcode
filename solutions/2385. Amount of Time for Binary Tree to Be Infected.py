@@ -1,4 +1,61 @@
-'''
+"""
+Title: 2385. Amount of Time for Binary Tree to be Infected
+URL: https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/description/
+
+Approach:
+- convert tree to undirected graph
+- do BFS starting from the infected node
+- answer will be BFS duration
+
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+
+
+Solution:
+"""
+from template import *
+
+class Solution:
+    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+        graph = defaultdict(list)
+        def dfs(node):
+            if node is None:
+                return
+            
+            if node.left:
+                graph[node.val].append(node.left.val)
+                graph[node.left.val].append(node.val)
+            if node.right:
+                graph[node.val].append(node.right.val)
+                graph[node.right.val].append(node.val)
+            
+            dfs(node.left)
+            dfs(node.right)
+        
+        dfs(root)
+        res = -1
+        visit = set([start])
+        queue = deque([start])
+        while queue:
+            res += 1
+            for _ in range(len(queue)):
+                curr = queue.popleft()
+                for neighbor in graph[curr]:
+                    if neighbor not in visit:
+                        queue.append(neighbor)
+                        visit.add(neighbor)
+        
+        return res
+
+
+
+
+
+
+"""
+Question:
 You are given the root of a binary tree with unique values, and an integer start. At minute 0, an infection starts from the node with value start.
 
 Each minute, a node becomes infected if:
@@ -35,46 +92,5 @@ The number of nodes in the tree is in the range [1, 105].
 1 <= Node.val <= 105
 Each node has a unique value.
 A node with a value of start exists in the tree.
-'''
+"""
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-      self.val = val
-      self.left = left
-      self.right = right
-from collections import defaultdict, deque
-from typing import *
-
-
-class Solution:
-    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
-        graph = defaultdict(list)
-        def dfs(node):
-            if node is None:
-                return
-            
-            if node.left:
-                graph[node.val].append(node.left.val)
-                graph[node.left.val].append(node.val)
-            if node.right:
-                graph[node.val].append(node.right.val)
-                graph[node.right.val].append(node.val)
-            
-            dfs(node.left)
-            dfs(node.right)
-        
-        dfs(root)
-        res = -1
-        visit = set([start])
-        queue = deque([start])
-        while queue:
-            res += 1
-            for _ in range(len(queue)):
-                curr = queue.popleft()
-                for neighbor in graph[curr]:
-                    if neighbor not in visit:
-                        queue.append(neighbor)
-                        visit.add(neighbor)
-        
-        return res
