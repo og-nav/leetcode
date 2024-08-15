@@ -19,6 +19,7 @@ from template import *
 ######## delete below after copying. this is only for the template file #########
 from typing import *
 from collections import *
+import heapq
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):

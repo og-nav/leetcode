@@ -1,6 +1,7 @@
 """
 Title: 200. Number of Islands
 URL: https://leetcode.com/problems/number-of-islands/
+Difficulty: Medium
 
 Approach:
 - iterate left to write, row by row
