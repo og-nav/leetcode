@@ -2,6 +2,7 @@
 Title: 200. Number of Islands
 URL: https://leetcode.com/problems/number-of-islands/
 Difficulty: Medium
+Tags: NeetCode 150, Grind, Meta
 
 Approach:
 - iterate left to write, row by row

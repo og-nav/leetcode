@@ -2,6 +2,7 @@
 Title: 2385. Amount of Time for Binary Tree to be Infected
 URL: https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/description/
 Difficulty: Medium
+Tags: NeetCode 150, Grind, Meta
 
 Approach:
 - convert tree to undirected graph

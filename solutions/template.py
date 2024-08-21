@@ -2,6 +2,7 @@
 Title: 
 URL: 
 Difficulty: 
+Tags: NeetCode 150, Grind, Blind 75, Meta, etc
 
 Approach:
 - write a few sentences on how to solve the problem

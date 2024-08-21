@@ -2,6 +2,7 @@
 Title: Top K Frequent Elements
 URL: https://leetcode.com/problems/top-k-frequent-elements/description/
 Difficulty: Medium
+Tags: NeetCode 150, Grind, Meta
 
 Approach:
 - populate dictionary with counts of all numbers in n

@@ -2,6 +2,7 @@
 Title: Toeplitz Matrix
 URL: https://leetcode.com/problems/toeplitz-matrix/description/
 Difficulty: Easy
+Tags: Meta
 
 Approach:
 - just check if matrix[i - 1][j - 1] is equal to matrix[i][j] for every square in matrix

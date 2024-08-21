@@ -2,6 +2,7 @@
 Title: Simplify Path
 URL: https://leetcode.com/problems/simplify-path/description/
 Difficulty: Medium
+Tags: NeetCode 150, Grind, Meta
 
 Approach:
 - use a stack based solution

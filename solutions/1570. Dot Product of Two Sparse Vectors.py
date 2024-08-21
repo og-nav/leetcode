@@ -2,6 +2,7 @@
 Title: Dot Product of Two Sparse Vectors
 URL: https://leetcode.com/problems/dot-product-of-two-sparse-vectors/description/
 Difficulty: Medium
+Tags: NeetCode 150, Grind, Meta
 
 Approach:
 1. Hashmap (naive)

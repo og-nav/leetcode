@@ -2,6 +2,7 @@
 Title: Buildings with an Ocean View
 URL: https://leetcode.com/problems/buildings-with-an-ocean-view/description/
 Difficulty: Medium
+Tags: NeetCode 150, Grind, Meta
 
 Approach:
 - just iterate right to left, keeping track of the highest building occured so far (initialize to 0)
