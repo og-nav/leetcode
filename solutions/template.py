@@ -3,6 +3,7 @@ Title:
 URL: 
 Difficulty: 
 Tags: NeetCode 150, Grind, Blind 75, Meta, etc
+Topics: String, Stack, etc
 
 Approach:
 - write a few sentences on how to solve the problem
