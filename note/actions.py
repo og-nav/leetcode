@@ -42,3 +42,14 @@ def edges_to_graph(edges):
     for u, v in edges:
         graph[u].append(v)
         graph[v].append(u)
+
+
+'''
+SORT
+'''
+# sort by first element in tuple
+## defaults to second item if tied
+### this avoids it in cases you don't want that
+#### (i.e. vertical order traversal)
+column = [(2, 11), (2, 10), (1, 9)]
+column.sort(key=lambda x: x[0])
