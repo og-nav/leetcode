@@ -7,11 +7,16 @@ Topics: Depth-First Search Breadth-First Search Graph Heap (Priority Queue) Shor
 
 Approach:
 - Basically Dijkstra's, but we take the longest path
-- Dijkstra's is basically regular graph BFS but with a minHeap instead of a queue
-- keep track of visited nodes in the set, and set res to whenever we encounter a node for the first time
-- initial weight is 0, and as you add nodes to the heap, do weight + w
+- initialize a distances hashmap with infinite distances for each node
+- at the top of the while loop, make a check to make sure the popped time is less than the current max time in distances
+-- this is because a destination node may have been pushed to the heap multiple times and since the current time is worse
+--- than our best time, we don't want to consider this route
+- we perform one more check in the for loop to make sure only viable candidate routes are pushed to the heap
 - IMPORTANT: make sure the first element in the tuple is the weight and NOT the node
 
+- also I used to think that Dijkstra's is just BFS (w/ using a visit set) but with a heap instead of a queue
+- maybe it's right, but I kept getting the implementation wrong
+- so stick to initializing all nodes to infinity and doing the double if statement check
 
 Time Complexity: O(V + E log(V))
 Space Complexity: O(V + E)
@@ -26,24 +31,26 @@ class Solution:
         graph = defaultdict(list)
         for u, v, w in times:
             graph[u].append((v, w))
-  
-        visit = set()
-        minHeap = [(0, k)]
-        heapq.heapify(minHeap)
-        res = 0
-        while minHeap:
-            w, u = heapq.heappop(minHeap)
-            if u not in visit:
-                visit.add(u)
-                res = w
+        
+        heap = [(0, k)] # (time elapsed, starting node)
+        distances = {i: float('inf') for i in range(1, n + 1)} # all nodes set to infinity
+        distances[k] = 0
 
-                for neighbor, weight in graph[u]:
-                    if neighbor not in visit:
-                        heapq.heappush(minHeap, (weight + w, neighbor))
+        while heap:
+            time, node = heapq.heappop(heap)
+            if time > distances[node]: # means node was pushed to the heap multiple times and this route is suboptimal
+                continue
 
-        if len(visit) == n:
-            return res
-        return -1
+            for neighbor, weight in graph[node]:
+                if time + weight < distances[neighbor]: # candidate path
+                    distances[neighbor] = time + weight
+                    heapq.heappush(heap, (time + weight, neighbor))
+        
+        for node in distances:
+            if distances[node] == float('inf'): # this node wasn't "visited"
+                return -1
+        
+        return max(distances.values())
               
 
 """

@@ -48,7 +48,7 @@ def edges_to_graph(edges):
 SORT
 '''
 # sort by first element in tuple
-## defaults to second item if tied
+## python defaults to second item if tied
 ### this avoids it in cases you don't want that
 #### (i.e. vertical order traversal)
 column = [(2, 11), (2, 10), (1, 9)]
