@@ -2,7 +2,7 @@
 Title: K Closest Points to Origin
 URL: https://leetcode.com/problems/k-closest-points-to-origin/description/
 Difficulty: Medium
-Tags: NeetCode 150, Grind, Meta
+Tags: NeetCode 150, Grind, Meta, Amazon, Google, Asana
 
 Approach:
 - main idea is to store elements in a max heap
@@ -11,6 +11,9 @@ Approach:
 - iterate through points, calculate distance, push (-distance, [x, y]) to maxHeap
 - if len(maxHeap) > k, pop the heap
 - lastly, use list comprehension to build result
+- small note -> we don't need to do square root because we are just using the value as a comparison
+-- avoids issue with doubles/floating points/etc
+- lastly, Meta might ask to do the quick select solution since it is O(n) TC on average
 
 
 Time Complexity: O(nlog(k)) -> we perform a log(k) function (popping the heap) for each element
@@ -24,15 +27,13 @@ from template import *
 
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        maxHeap = []
-        
+        heap = []
         for x, y in points:
-            distance = sqrt(x ** 2 + y ** 2)
-            heapq.heappush(maxHeap, (-distance, [x, y]))
-            if len(maxHeap) > k:
-                heapq.heappop(maxHeap)
+            heapq.heappush(heap, (-(x ** 2 + y ** 2), x, y))
+            if len(heap) > k:
+                heapq.heappop(heap)
         
-        return [p[1] for p in maxHeap]
+        return [[x, y] for _, x, y in heap]
 
 
 

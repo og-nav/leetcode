@@ -2,12 +2,13 @@
 Title: Kth Largest Element in an Array
 URL: https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 Difficulty: Medium
-Tags: NeetCode 150, Grind, Meta, Amazon
+Tags: NeetCode 150, Grind, Meta, Amazon, Google, Microsoft, Adobe, Yahoo, Uber, Salesforce
 
 Approach:
 - create a minHeap
 - iterate through nums and push to heap
 - if length of minHeap is greater than k, we can just pop
+- Meta might ask to solve using quick select for O(n) TC
 
 
 Time Complexity: O(nlog(k)) -> n elements and we perform a log(k) move per element (popping the heap)
@@ -22,7 +23,6 @@ from template import *
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         minHeap = []
-        heapq.heapify(minHeap)
         for n in nums:
             heapq.heappush(minHeap, n)
             if len(minHeap) > k:

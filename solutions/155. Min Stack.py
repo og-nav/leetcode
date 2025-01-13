@@ -2,22 +2,20 @@
 Title: Min Stack
 URL: https://leetcode.com/problems/min-stack/description/
 Difficulty: Medium
-Tags: NeetCode 150, Grind
+Tags: NeetCode 150, Grind, Bloomberg, Microsoft, Google, Amazon, Meta, Apple, Adobe
+Topics: Stack
+Design
 
 Approach:
-- instead of saving only the value, save a tuple of the value and the previous minimum
-- the class variables are just an empty array for the stack and the "previous" minimum value (set to float('inf'))
-- for push, we just append the val and the current min
-- for pop, we pop and check the values
--- if the value popped is equal to the current min_value (we got rid of the smallest value),
---- we set the current min_value to the previous min_val
-- top and getMin are straightforward, we just access/return the class variables
-
+- we only need one array
+- we just keep a tuple with the value and the current minimum value
+- only need to perform the check when pushing to the stack
+-- if it already exists, then the associated min value is the min
+    of the min_value at the top of the stack and the current value
+- all other functions are simple one liners.
 
 Time Complexity: O(1)
 Space Complexity: O(n)
-
-
 
 Solution:
 """
@@ -27,23 +25,21 @@ class MinStack:
 
     def __init__(self):
         self.stack = []
-        self.min_value = float('inf')
 
     def push(self, val: int) -> None:
-        self.stack.append((val, self.min_value)) # (current value, previous min value)
-        if val < self.min_value:
-            self.min_value = val
+        if self.stack:
+            self.stack.append((val, min(val, self.stack[-1][1])))
+        else:
+            self.stack.append((val, val))
 
     def pop(self) -> None:
-        val, prev = self.stack.pop()
-        if val == self.min_value:
-            self.min_value = prev
+        self.stack.pop()
 
     def top(self) -> int:
         return self.stack[-1][0]
 
     def getMin(self) -> int:
-        return self.min_value
+        return self.stack[-1][1]
 
 
 # Your MinStack object will be instantiated and called as such:

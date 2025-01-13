@@ -2,16 +2,17 @@
 Title: Subtree of Another Tree
 URL: https://leetcode.com/problems/subtree-of-another-tree/description/
 Difficulty: Easy
-Tags: NeetCode 150, Grind, Blind 75
+Tags: NeetCode 150, Grind, Blind 75, Amazon, Google, Meta, Microsoft
 
 Approach:
 - helper function to check if same tree
 - brute force
 - chose to do iterative for main traversal to avoid double dfs
+- also, you can serialize tree and do rabin-karp or KMP to reduce time complexity to O(m + n)
 
 
-Time Complexity: O(n * m)
-Space Complexity: O(n + m)
+Time Complexity: O(m * n)
+Space Complexity: O(m + n)
 
 
 
