@@ -7,7 +7,7 @@ Tags: NeetCode 150
 Approach:
 - not so straightforward -> I get this wrong quite often. practice once before looking at solution
 - basically, want to do number of islands but with an out_of_bounds flag and a set that holds the island
-- important: isntead of waiting till end to update all squares, can just update them as they come as long as
+- important: instead of waiting till end to update all squares, can just update them as they come as long as
 -- out_of_bounds is false
 - there is a weird quirk where if I check for if out_of_bounds or invalid(r, c), the code fails.
                                               needs to just be if invalid(r, c)
