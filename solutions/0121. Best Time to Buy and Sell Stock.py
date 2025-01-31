@@ -2,14 +2,15 @@
 Title: Best Time to Buy and Sell Stock
 URL: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
 Difficulty: Easy
-Tags: NeetCode 150, Grind, Blind 75, Amazon, Google, Microsoft
+Tags: NeetCode 150, Grind, Blind 75, Amazon, Meta, Google, Microsoft, Bloomberg, Adobe, Yahoo, Everyone
+Topics: Array
+Dynamic Programming
 
 Approach:
-- we want a two pointer approach
-- l = 0, r starts at 1
-- each iteration, want to calculate difference between r and l
-- if less than zero, want to set l to r
-- if greater than zero, res is just max of res and diff
+- we want to keep track of the lowest price
+- then iterate through. while iterating, if our current profit is positive, res = max(res, profit)
+- but if our profit is less than 0, we know we have a lower "low" to start from
+- so we can just update our min_price accordingly
 
 
 Time Complexity: O(n)
@@ -24,13 +25,13 @@ from template import *
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         res = 0
-        l = 0
-        for r in range(1, len(prices)):
-            diff = prices[r] - prices[l]
-            if diff > 0:
-                res = max(res, diff)
-            else:
-                l = r
+        min_price = prices[0]
+        for price in prices:
+            profit = price - min_price
+            if profit < 0:
+                min_price = price
+            
+            res = max(res, profit)
         
         return res
 

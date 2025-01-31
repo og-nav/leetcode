@@ -10,8 +10,7 @@ Counting
 Approach:
 - very tricky and very deceptive
 - want to use a counter hashmap, and make sure to sort each domino to avoid needless if statements
-- then afterwards, want to make a second pass where if the count is greater than 1, we apply the 
--- summation formula but with minus instead of plus
+- then afterwards, want to make a second pass where we apply the summation formula but with minus instead of plus
 
 
 Time Complexity: O(n)
@@ -25,15 +24,13 @@ from template import *
 
 class Solution:
     def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
-        d = defaultdict(int)
-        res = 0
+        pairs = defaultdict(int)
         for domino in dominoes:
-            c = tuple(sorted(domino))
-            d[c] += 1
+            pairs[tuple(sorted(domino))] += 1
         
-        for k in d:
-            if d[k] > 1:
-                res += (d[k] ** 2 - d[k]) // 2
+        res = 0
+        for domino in pairs:
+            res += (pairs[domino] ** 2 - pairs[domino]) // 2
         
         return res
 
