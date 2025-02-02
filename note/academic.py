@@ -1,4 +1,5 @@
 from collections import *
+from solutions.template import *
 import heapq
 
 # dijkstra's algorithm
@@ -65,4 +66,16 @@ def bellman_ford(edges: List[List[int]], n: int, k: int):
   return res if res != float('inf') else -1
 
 
+# Rabin Karp
 
+
+
+
+
+
+# KMP
+
+
+
+
+# Boyer Moore Voting
