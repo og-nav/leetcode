@@ -1,0 +1,8 @@
+1. need to remember that the second arguments in python are often non-inclusive
+  - so for example, if you are using a for loop to do sliding window, you need to remember that the second argument
+    of range and the second argument of the slice are non-inclusive, so you need to do + 1 for one of them. otherwise
+    you will cut out the last element
+    ex:
+    for i in range(len(prefix), len(s) + 1):
+      if s[i - len(prefix): i] == prefix:
+        continue # some action
