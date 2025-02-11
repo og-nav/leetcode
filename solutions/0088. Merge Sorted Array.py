@@ -2,7 +2,10 @@
 Title: Merge Sorted Array
 URL: https://leetcode.com/problems/merge-sorted-array/
 Difficulty: Easy
-Tags: NeetCode 150, Grind, Meta
+Tags: Meta, Google, Microsoft, Amazon, Bloomberg, Adobe
+Topics: Array
+Two Pointers
+Sorting
 
 Approach:
 - Naive: insert num2 into the end of nums1 and then sort
@@ -18,6 +21,7 @@ Approach:
 - some of nums1 values may ultimately be overwritten, but that's fine because they would have already been placed 
 -- at the end of nums1 and are not needed anymore
 - worst case is if all nums2 values are greater than all nums1 values -> no nums1 values will be overwritten
+- to visualize, imagine a zipper zipping up nums1 from the end to the front. then problem makes sense.
 
 
 Time Complexity: O(m + n)
@@ -34,19 +38,20 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        
-        p1 = m - 1
-        p2 = n - 1
-
-        for p in range(m + n - 1, -1, -1):
-            if p2 < 0:
+        i = m - 1
+        j = n - 1
+        for k in range(m + n - 1, -1, -1):
+            if i == -1:
+                nums1[k] = nums2[j]
+                j -= 1
+            elif j == -1: # we know that the rest of nums1 is already sorted
                 break
-            if p1 >= 0 and nums1[p1] > nums2[p2]:
-                nums1[p] = nums1[p1]
-                p1 -= 1
+            elif nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                i -= 1
             else:
-                nums1[p] = nums2[p2]
-                p2 -= 1
+                nums1[k] = nums2[j]
+                j -= 1
 
 
 
