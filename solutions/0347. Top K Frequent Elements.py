@@ -29,18 +29,12 @@ class Solution:
             d[n] += 1
         
         minHeap = []
-        heapq.heapify(minHeap)
-
         for key in d:
             heapq.heappush(minHeap, (d[key], key))
             if len(minHeap) > k:
                 heapq.heappop(minHeap)
         
-        res = []
-        for _, num in minHeap:
-            res.append(num)
-        
-        return res
+        return [n for _, n in minHeap]
 
 
 

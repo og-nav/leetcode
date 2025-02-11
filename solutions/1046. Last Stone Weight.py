@@ -28,13 +28,12 @@ class Solution:
         heapq.heapify(heap)
 
         while len(heap) > 1:
-            a = heapq.heappop(heap)
-            b = heapq.heappop(heap)
-            
-            if a != b:
-                heapq.heappush(heap, -abs(a - b))
+            heaviest = heapq.heappop(heap)
+            second_heaviest = heapq.heappop(heap)
+            if heaviest != second_heaviest:
+                heapq.heappush(heap, heaviest - second_heaviest)
         
-        if len(heap) == 1:
+        if heap:
             return -heap[0]
         return 0
 
