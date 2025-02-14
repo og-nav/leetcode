@@ -48,3 +48,9 @@ SORT
 #### (i.e. vertical order traversal)
 column = [(2, 11), (2, 10), (1, 9)]
 column.sort(key=lambda x: x[0])
+
+def sort_by_length(lst: List[str]) -> None:
+    """
+    Sorts a list of strings by the length of each string
+    """        
+    lst.sort(key=lambda x: len(x)) # Note we can also do lst.sort(key=len)

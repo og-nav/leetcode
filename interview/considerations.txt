@@ -7,6 +7,7 @@
 -- for graphs, also ask to make sure input is valid like there are no negative weights etc
 
 - for questions with integer addition or multiplication, ask to make sure that I can assume no integer overflow
+-- ask if I can assume all intermediate calculations will also not overflow in the process -> useful for binary search when using (l + r) // 2
 -- for any questions that require division, ask to make sure that I can assume that there will be no division by 0
 
 - ask for question constraints
