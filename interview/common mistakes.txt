@@ -9,4 +9,4 @@
 
 2. when using "".join(nums), all elements in the array must be strings
   - ex: nums = [1, 2, 3] -> res = "".join(nums) -> WRONG
-        nums = ['1', '2', '3'] -> res = ""join(nums) -> RIGHT
+        nums = ['1', '2', '3'] -> res = "".join(nums) -> RIGHT
