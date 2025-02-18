@@ -10,6 +10,11 @@
 -- ask if I can assume all intermediate calculations will also not overflow in the process -> useful for binary search when using (l + r) // 2
 -- for any questions that require division, ask to make sure that I can assume that there will be no division by 0
 
+- for questions where input number is a string
+-- ask about existence of leading 0s
+-- ask if I can convert the entire number to an int without overflow
+--- or if I should solve using pointers
+
 - ask for question constraints
 -- like array length
 -- all numbers are unique
