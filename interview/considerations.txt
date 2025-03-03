@@ -1,7 +1,12 @@
 - ask if input is valid -> ex if binary tree, ask if binary tree exists and is a valid tree
 
-- ask if it's ok to modify input array -> ex if 2d array like Number of Islands should I use visit set or can I
+- ask if it's ok to modify input array -> ex if 2d array like Number of Islands should I use visit set or can I modify input array directly
 -- modify input array to set visited island to 0
+-- discuss pros and cons
+--- places where in-place algorithms might cause problems:
+---- algorithm needs to run in a multi-threaded environment without exclusive access to the array. Other threads might need to read the array as well and may not expect it to be modified.
+---- even if there is only a single thread or the algorithm has exclusive access to the array while running, the array might need to be reused later or by another thread once the lock
+     has been released.
 
 - for graphs and linked lists, make sure to ask that I can assume there are no cycles/loops
 -- for graphs, also ask to make sure input is valid like there are no negative weights etc
