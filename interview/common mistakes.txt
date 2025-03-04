@@ -10,3 +10,18 @@
 2. when using "".join(nums), all elements in the array must be strings
   - ex: nums = [1, 2, 3] -> res = "".join(nums) -> WRONG
         nums = ['1', '2', '3'] -> res = "".join(nums) -> RIGHT
+
+3. when backtracking in an n! setting, use a list instead of a set for the available numbers
+  - def backtrack(curr, available):
+            if len(curr) == len(nums):
+                res.append(curr[::])
+                return
+            
+            for i in range(len(available)):
+                curr.append(available[i])
+                backtrack(curr, available[: i] + available[i + 1::])
+                curr.pop()
+        
+        backtrack([], nums)
+        return res
+  - using a set will result in duplicates being added to the result variable
