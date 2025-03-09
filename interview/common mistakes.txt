@@ -25,3 +25,5 @@
         backtrack([], nums)
         return res
   - using a set will result in duplicates being added to the result variable
+
+4. Space complexity for sets/hashmaps involving letters will be O(1) since at most 26 characters will be in there. Be aware of problem context.

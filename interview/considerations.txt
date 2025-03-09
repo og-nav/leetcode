@@ -20,7 +20,7 @@
 -- ask if I can convert the entire number to an int without overflow
 --- or if I should solve using pointers
 
-- ask for question constraints
--- like array length
--- all numbers are unique
--- all positive numbers or if negative numbers are also included
+- ask for question constraints that can help find a solution
+-- like array length (for time complexity)
+-- all numbers are unique (usage of sets as a visited)
+-- all positive numbers or if negative numbers are also included (for some mathematical properties)
