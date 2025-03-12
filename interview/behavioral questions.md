@@ -1,6 +1,6 @@
 # Questions
 
-1. Favorite project
+- Favorite project
   - how did you measure the results/performance
   - what challenges you faced and how you handled them
   - in hindsight, what would you do differently
