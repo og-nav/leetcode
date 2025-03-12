@@ -2,13 +2,13 @@
 Title: Binary Tree Right Side View
 URL: https://leetcode.com/problems/binary-tree-right-side-view/description/
 Difficulty: Medium
-Tags: NeetCode 150, Grind, Meta
+Tags: NeetCode 150, Grind, Meta, Amazon, TikTok, Google, Bloomberg
 Topics: Tree, Depth-First Search, Breadth-First Search, Binary Tree
 
 Approach:
-- stock BFS, just in time/distance spot initialize a node to None
-- do BFS and set last to popped node 
-- after for loop, append last to res
+- stock BFS
+- append last element of queue in time/level spot to result
+- simple
 
 
 Time Complexity: O(n)
@@ -24,21 +24,18 @@ class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        
+            
         res = []
         queue = deque([root])
         while queue:
-            last = None
+            res.append(queue[-1].val)
             for _ in range(len(queue)):
                 node = queue.popleft()
-                last = node.val
 
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            
-            res.append(last)
         
         return res
 

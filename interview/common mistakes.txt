@@ -1,3 +1,5 @@
+mistakes + things to be aware of.
+
 1. need to remember that the second arguments in python are often non-inclusive
   - so for example, if you are using a for loop to do sliding window, you need to remember that the second argument
     of range and the second argument of the slice are non-inclusive, so you need to do + 1 for one of them. otherwise
@@ -27,3 +29,23 @@
   - using a set will result in duplicates being added to the result variable
 
 4. Space complexity for sets/hashmaps involving letters will be O(1) since at most 26 characters will be in there. Be aware of problem context.
+
+5. cannot delete from a hashmap while iterating through it, otherwise you will get "dictionary changed size during iteration" error
+  - we need to create a to_delete array and delete that way
+  - while counts:
+      to_delete = []
+      for key in counts:
+        res.append(key)
+        counts[key] -= 1
+        if counts[key] == 0:
+          to_delete.append(key)
+            
+        for key in to_delete:
+          del counts[key]
+
+6. sorting a string using sorted returns a list
+    ->  tea = "tea"
+        print(sorted(tea))
+         -> ['a', 'e', 't']
+  we also CANNOT call sort directly on a string, only works with sorted
+    -> tea.sort() # INVALID

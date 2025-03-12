@@ -2,7 +2,7 @@
 Title: Group Anagrams
 URL: https://leetcode.com/problems/group-anagrams/description/
 Difficulty: Medium
-Tags: NeetCode 150, Grind, Blind 75, Amazon
+Tags: NeetCode 150, Grind, Blind 75, Amazon, Meta, Apple, Microsoft
 
 Approach:
 - could just sort word and use that as key for hashmap
@@ -23,6 +23,19 @@ Space Complexity: O(n * k)
 Solution:
 """
 from template import *
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anagrams = defaultdict(list)
+
+        for word in strs:
+            anagrams[tuple(sorted(word))].append(word)
+        
+        res = []
+        for word in anagrams:
+            res.append(anagrams[word])
+        
+        return res
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:

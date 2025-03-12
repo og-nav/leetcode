@@ -3,11 +3,15 @@ Title: 200. Number of Islands
 URL: https://leetcode.com/problems/number-of-islands/
 Difficulty: Medium
 Tags: NeetCode 150, Grind, Meta
+Topics: Array
+Depth-First Search
+Breadth-First Search
+Union Find
+Matrix
 
 Approach:
-- iterate left to write, row by row
+- iterate left to right, row by row
 - once island is reached and current [r, c] isn't part of an already visited island, DFS/BFS the island
--
 
 
 Time Complexity: O(m * n)

@@ -2,7 +2,7 @@
 Title: Sum Root to Leaf Numbers
 URL: https://leetcode.com/problems/sum-root-to-leaf-numbers/description/
 Difficulty: Medium
-Tags: 
+Tags: Meta, Google, Amazon, Microsoft, Bloomberg
 Topics: Tree
 Depth-First Search
 Binary Tree
@@ -14,6 +14,7 @@ Approach:
 - ex: 0 * 10 + 9 = 9
       9 * 10 + 5 = 95
       95 * 10 + 4 = 954 etc
+- INTERVIEWER MAY ASK TO SOLVE WITHOUT A GLOBAL VARIABLE
 
 
 Time Complexity: O(n)
@@ -24,6 +25,20 @@ Space Complexity: O(n)
 Solution:
 """
 from template import *
+
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        
+        def dfs(node, curr_sum):
+            if not node:
+                return 0
+            
+            if not node.left and not node.right:
+                return curr_sum * 10 + node.val
+            
+            return dfs(node.left, curr_sum * 10 + node.val) + dfs(node.right, curr_sum * 10 + node.val)
+        
+        return dfs(root, 0)
 
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
