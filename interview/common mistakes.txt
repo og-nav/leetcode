@@ -49,3 +49,11 @@ mistakes + things to be aware of.
          -> ['a', 'e', 't']
   we also CANNOT call sort directly on a string, only works with sorted
     -> tea.sort() # INVALID
+
+7. enumerate only accepts two arguments. 
+- if we need the index of the edge list (for example a parallel list of weights)
+- then we need to unpack the edge list inside a tuple
+ex: graph = defaultdict(list)
+    for i, (u, v) in enumerate(edges):
+      graph[u].append((v, weight[i]))
+      graph[v].append((u, weight[i]))

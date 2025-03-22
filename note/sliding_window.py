@@ -40,6 +40,10 @@ have a common pattern. They are usually O(n).
 - for fixed window size, we will need to precompute the first window and then add/subtract to it while iterating through the rest of the array
 -- so the code will just be two for loops right after another -> one for precomputing the state, and the second for iterating through the rest of the array
 
+6. 
+- for number of contiguous subarrays or substrings, we can just keep adding r - l + 1
+-- since it implicitly does the n (n + 1) / 2 stuff each loop while the window is valid
+
 When does sliding window not work?
 1. does not work if knowing one element at the edges of the window does not tell you how to update the state of the window or whether it becomes valid
 -- ex suppose we need the min or max of the current window as part of the state

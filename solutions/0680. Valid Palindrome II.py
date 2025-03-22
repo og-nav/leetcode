@@ -2,7 +2,10 @@
 Title: Valid Palindrome II
 URL: https://leetcode.com/problems/valid-palindrome-ii/description/
 Difficulty: Easy
-Tags: Meta
+Tags: Meta, Google, Amazon, Apple, Microsoft
+Topics: Two Pointers
+String
+Greedy
 
 Approach:
 - want to do two pointers starting from each end
@@ -22,6 +25,33 @@ Space Complexity: O(n) -> NOTE: this approach might use extra space because of s
 Solution:
 """
 from template import *
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        def is_palindrome(word):
+            l, r = 0, len(word) - 1
+
+            while l <= r:
+                if word[l] != word[r]:
+                    return False
+                
+                l += 1
+                r -= 1
+            
+            return True
+
+        l, r = 0, len(s) - 1
+
+        while l <= r:
+            if s[l] != s[r]:
+                if is_palindrome(s[l + 1: r + 1]) or is_palindrome(s[l: r]):
+                    return True
+                return False
+            
+            l += 1
+            r -= 1
+        
+        return True
 
 class Solution:
     def validPalindrome(self, s: str) -> bool:
