@@ -9,7 +9,7 @@ Approach:
 - iterate through nums and push to heap
 - if length of minHeap is greater than k, we can just pop
 - Meta might ask to solve using quick select for O(n) TC
-
+- and counting sort. MEMORIZE BEFORE INTERVIEW
 
 Time Complexity: O(nlog(k)) -> n elements and we perform a log(k) move per element (popping the heap)
 Space Complexity: O(k) -> heap only ever holds k elements at a time
@@ -22,13 +22,15 @@ from template import *
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        minHeap = []
+        heap = []
+
         for n in nums:
-            heapq.heappush(minHeap, n)
-            if len(minHeap) > k:
-                heapq.heappop(minHeap)
+            heapq.heappush(heap, n)
+
+            if len(heap) > k:
+                heapq.heappop(heap)
         
-        return minHeap[0]
+        return heap[0]
 
 
 

@@ -2,7 +2,7 @@
 Title: Longest Strictly Increasing or Strictly Decreasing Subarray
 URL: https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/description/
 Difficulty: Easy
-Tags: None
+Tags: Meta, Bloomberg, Google, Microsoft
 Topics: Array
 
 Approach:
