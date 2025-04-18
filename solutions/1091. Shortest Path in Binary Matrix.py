@@ -2,7 +2,10 @@
 Title: Shortest Path in Binary Matrix
 URL: https://leetcode.com/problems/shortest-path-in-binary-matrix/description/
 Difficulty: Medium
-Tags: Meta
+Tags: Meta, Google, Amazon, Microsoft, Bloomberg
+Topics: Array
+Breadth-First Search
+Matrix
 
 Approach:
 - pretty much BFS
@@ -11,6 +14,7 @@ Approach:
 -- add to queue, then add to visit
 -- important to add to visit here and not do dfs style because you might repeatedly add visited nodes to visit
 - Mention A* algorithm, but idk how to implement
+- Meta variant is to return the path instead of just the length
 
 
 Time Complexity: O(m * n) -> or O(n ^ 2) since it is n * n
@@ -22,31 +26,30 @@ Solution:
 """
 from template import *
 
+# stock
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         if grid[0][0] == 1 or grid[-1][-1] == 1:
             return -1
         
-        directions = [[0, 1], [0, -1], [1, 0], [-1, 0], [-1, -1], [-1, 1], [1, -1], [1, 1]]
+        directions = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [1, -1], [-1, 1], [-1, -1]]
         def invalid(r, c):
             return r < 0 or c < 0 or r >= len(grid) or c >= len(grid[0])
-        
+
+        res = 0
         visit = set([(0, 0)])
         queue = deque([(0, 0)])
-        distance = 0
         while queue:
-            distance += 1
+            res += 1
             for _ in range(len(queue)):
                 r, c = queue.popleft()
-                if r == len(grid) - 1 and c == len(grid) - 1:
-                    return distance
-
+                if r == len(grid) - 1 and c == len(grid[0]) - 1:
+                    return res
+                
                 for dr, dc in directions:
-                    if invalid(r + dr, c + dc) or (r + dr, c + dc) in visit or grid[r + dr][c + dc] == 1:
-                        continue
-                    
-                    queue.append((r + dr, c + dc))
-                    visit.add((r + dr, c + dc))
+                    if not invalid(r + dr, c + dc) and (r + dr, c + dc) not in visit and grid[r + dr][c + dc] == 0:
+                        visit.add((r + dr, c + dc))
+                        queue.append((r + dr, c + dc))
         
         return -1
 
