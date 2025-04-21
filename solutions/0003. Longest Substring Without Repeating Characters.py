@@ -11,10 +11,11 @@ Approach:
 - standard sliding window
 - use a set to store the state
 - there is a one pass solution where you use a hashmap and store the index of the next occurence -> read up on this when preparing for interview
-
+- we add to the window afterwards because set only tells whether the item is in the window or not
+-- cause otherwise we would just add and then potentially end up shrinking the entire window incorrectly
 
 Time Complexity: O(n)
-Space Complexity: O(n) -> depends on the window. window could be entire string at most
+Space Complexity: O(1) -> fixed number of english letters, digits, symbols, and spaces
 
 
 
